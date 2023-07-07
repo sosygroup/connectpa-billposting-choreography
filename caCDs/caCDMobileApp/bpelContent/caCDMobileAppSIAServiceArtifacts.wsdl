@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions
+		targetNamespace="http://it.univaq.connectpa.publicbillposting.sia/caCDMobileApp/Artifacts"
+		xmlns:ns="http://it.univaq.connectpa.publicbillposting.sia/caCDMobileApp"
+		xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <import location="caCDMobileAppSIAService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting.sia/caCDMobileApp"/>
+
+  <partnerLinkType name="SIAPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+  	<role name="SIARole" portType="ns:SetInvocationAddressPT"/>
+  </partnerLinkType>
+  
+</definitions>

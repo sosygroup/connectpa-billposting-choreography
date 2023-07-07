@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:caCDMobileApp="http://it.univaq.connectpa.publicbillposting/caCDMobileApp" xmlns:caCDPaymentService="http://it.univaq.connectpa.publicbillposting/caCDPaymentService" xmlns:caCDPosterService="http://it.univaq.connectpa.publicbillposting/caCDPosterService" xmlns:caCDPosterService_1="http://it.univaq.connectpa.publicbillposting.sia/caCDPosterService" xmlns:cart="http://it.univaq.connectpa.publicbillposting/cart" xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager" xmlns:municipalityposterservice="http://it.univaq.connectpa.publicbillposting/municipalityposterservice" xmlns:posterservice="http://it.univaq.connectpa.publicbillposting/posterservice">
+  <process name="caCDPosterService:caCDPosterServiceProcess.bpel">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="Client">
+      <service name="caCDPosterService:caCDPosterService" port="caCDPosterServicePort"/>
+    </provide>
+    <invoke partnerLink="PosterService">
+      <service name="posterservice:posterService" port="posterServicePort"/>
+    </invoke>
+    <invoke partnerLink="PosterServiceConsumer">
+      <service name="posterservice:posterService" port="posterServiceConsumerPort"/>
+    </invoke>
+    <invoke partnerLink="Cart">
+      <service name="cart:cartService" port="cartPort"/>
+    </invoke>
+    <invoke partnerLink="MunicipalityPosterService">
+      <service name="municipalityposterservice:municipalityPosterService" port="municipalityPosterServicePort"/>
+    </invoke>
+    <invoke partnerLink="CaCDMobileApp">
+      <service name="caCDMobileApp:caCDMobileAppService" port="caCDMobileAppPort"/>
+    </invoke>
+    <invoke partnerLink="CaCDPaymentService">
+      <service name="caCDPaymentService:caCDPaymentService" port="caCDPaymentServicePort"/>
+    </invoke>
+    <invoke partnerLink="CaCDMobileAppCoordination">
+      <service name="caCDMobileApp:caCDMobileAppService" port="caCDMobileAppCoordinationPort"/>
+    </invoke>
+    <invoke partnerLink="ContextManager">
+      <service name="contextmanager:contextManagerService" port="ContextManagerPort"/>
+    </invoke>
+  </process>
+  <process name="caCDPosterService_1:InvocationAddressService">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="SIAService">
+      <service name="caCDPosterService_1:caCDPosterServiceSetInvocationAddressService" port="SetInvocationAddressServicePort"/>
+    </provide>
+  </process>
+</deploy>

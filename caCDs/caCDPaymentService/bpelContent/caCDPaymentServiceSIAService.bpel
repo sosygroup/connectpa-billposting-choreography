@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" 
+			  name="InvocationAddressService"
+    		  targetNamespace="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService"
+    		  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+    		  xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    		  xmlns:ns="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService/Artifacts" 
+    		  xmlns:ns0="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService">
+    
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDPaymentServiceSIAService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDPaymentServiceSIAServiceArtifacts.wsdl" namespace="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService/Artifacts"/>
+   
+    <bpel:partnerLinks>
+        <bpel:partnerLink name="SIAService" partnerLinkType="ns:SIAPLT" myRole="SIARole" />
+    </bpel:partnerLinks>
+    
+    <bpel:variables>
+        <bpel:variable name="myName" type="xsd:string"/>
+        <bpel:variable name="participantName" type="xsd:string"/>
+        <bpel:variable name="participantAddress" type="xsd:string"/>
+
+        <bpel:variable name="setInvocationAddressRequest" messageType="ns0:setInvocationAddress" />
+        <bpel:variable name="setInvocationAddressResponse" messageType="ns0:setInvocationAddressResponse" />
+    </bpel:variables>
+    
+    <bpel:sequence>
+        <bpel:pick createInstance="yes" name="SwitchInvokedOperation">
+            <bpel:onMessage operation="setInvocationAddress"
+                			partnerLink="SIAService"
+                			portType="ns0:SetInvocationAddressPT" 
+                			variable="setInvocationAddressRequest">                      
+                <bpel:sequence>                    
+		            <!-- Initialize variables -->
+					<bpel:assign validate="no" name="Assign_myName">
+					 <bpel:copy>
+					     <bpel:from>
+					          <bpel:literal xml:space="preserve">caCDPaymentService</bpel:literal>
+					     </bpel:from>
+					     <bpel:to variable="myName"/>
+					 </bpel:copy>
+					</bpel:assign>
+
+					<bpel:assign name="assign_participantName">
+						<bpel:copy>
+							<bpel:from variable="setInvocationAddressRequest" part="request">
+								<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+									<![CDATA[participantName]]>
+								</bpel:query>
+							</bpel:from>
+							<bpel:to variable="participantName"></bpel:to>
+						</bpel:copy>
+					</bpel:assign>
+
+					<bpel:assign name="assign_participantAddress">
+						<bpel:copy>
+							<bpel:from variable="setInvocationAddressRequest" part="request">
+								<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+									<![CDATA[address]]>
+								</bpel:query>
+							</bpel:from>
+							<bpel:to variable="participantAddress"></bpel:to>
+						</bpel:copy>
+					</bpel:assign>
+                    
+                    <bpel:assign name="Assign_store_participantAddress">  
+						<bpel:copy xmlns:siaendpointsmanager="java:it.univaq.incipict.mid1.sia.endpoints.manager.services.SiaEndpointsManagerService">
+						    <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+						    	siaendpointsmanager:storeSimpleParticipantAddress($myName, $participantName, $participantAddress)
+						   	</bpel:from>	   	
+                            <bpel:to part="response" variable="setInvocationAddressResponse"/>
+						</bpel:copy>  
+                    </bpel:assign>
+
+                    <bpel:reply name="ReplyToSetInvocationAddress" 
+                    			operation="setInvocationAddress" 
+                    			partnerLink="SIAService" 
+                    			portType="ns0:SetInvocationAddressPT" 
+                    			variable="setInvocationAddressResponse" />
+                </bpel:sequence>
+            </bpel:onMessage>
+        </bpel:pick>
+    </bpel:sequence>
+    
+</bpel:process>

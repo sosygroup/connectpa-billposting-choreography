@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/paymentservice"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="paymentservice"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/paymentservice">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/paymentservice">
+
+		<xsd:element name="paymentData" type="tns:paymentData"/>
+		<xsd:element name="receipt" type="tns:receipt"/>
+
+		<xsd:element name="getPaymentConfirmationMessageRequest" type="tns:instanceInfoWithContext"/>
+		<xsd:element name="getPaymentConfirmationMessageResponse" type="tns:paymentConfirmation"/>
+	
+		<xsd:complexType name="paymentData">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="billingCode" type="xsd:string"/>
+		      <xsd:element name="amountDue" type="xsd:double"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="receipt">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string" />
+				<xsd:element name="billingCode" type="xsd:string" />
+				<xsd:element name="amountPaid" type="xsd:double" />
+				<xsd:element name="transactionCode" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="instanceInfoWithContext">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+				<xsd:element name="contextRef" type="xsd:string"/>
+				<xsd:element name="serviceContext">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="referenceLatitude" type="xsd:double"/>
+							<xsd:element name="referenceLongitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element> 
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="paymentConfirmation">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+			  <xsd:element name="municipalityName" type="xsd:string" />
+			  <xsd:element name="billingCode" type="xsd:string"/>
+			  <xsd:element name="confirmed" type="xsd:boolean"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="paymentData">
+  	<wsdl:part element="tns:paymentData" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="receipt">
+  	<wsdl:part element="tns:receipt" name="response"/>
+  </wsdl:message>
+
+  <wsdl:message name="getPaymentConfirmationMessageRequest">
+  	<wsdl:part element="tns:getPaymentConfirmationMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentConfirmationMessageResponse">
+  	<wsdl:part element="tns:getPaymentConfirmationMessageResponse" name="response"/>
+  </wsdl:message>
+
+  <!-- Provider part -->
+  <wsdl:portType name="paymentServicePT">
+    <wsdl:operation name="SendPayment">
+      <wsdl:input message="tns:paymentData"/>
+      <wsdl:output message="tns:receipt"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="paymentServiceBinding" type="tns:paymentServicePT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendPayment">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <!-- Consumer Part -->
+  <wsdl:portType name="paymentServiceConsumerPT">
+  	<wsdl:operation name="getPaymentConfirmationMessage">
+  	  <wsdl:input message="tns:getPaymentConfirmationMessageRequest"/>
+  	  <wsdl:output message="tns:getPaymentConfirmationMessageResponse"/>
+  	</wsdl:operation>
+ </wsdl:portType>
+
+  <wsdl:binding name="paymentServiceConsumerBinding" type="tns:paymentServiceConsumerPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPaymentConfirmationMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="paymentService">
+    <!-- Provider port -->
+    <wsdl:port binding="tns:paymentServiceBinding" name="paymentServicePort">
+      <soap:address location="http://localhost:9080/paymentservice/paymentservice"/>
+    </wsdl:port>
+    <!-- Consumer port -->
+    <wsdl:port binding="tns:paymentServiceConsumerBinding" name="paymentServiceConsumerPort">
+      <soap:address location="http://localhost:9080/paymentservice/consumer"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

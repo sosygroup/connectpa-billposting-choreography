@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+  <title>Instances</title>
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Choreography Instances</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+              <li class="breadcrumb-item active">Instances</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+       	  <div class="col-12">
+	          <div class="card">
+	              <div class="card-header">
+	                <h3 class="card-title">Available Instances</h3>
+	              </div>
+	              <!-- /.card-header -->
+	              <div class="card-body">
+	                <table class="table table-bordered">
+	                  <thead>                  
+	                    <tr>
+	                      <th>Instance ID</th>
+	                      <th>Start Time</th>
+	                      <th>Execution Time (ms)</th>
+	                      <th style="width: 40px">Actions</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <tr th:each="instance: ${instances}">
+	                      <td>
+	                      	<span th:if="${instance.startTime == null
+	                      				|| instance.earthquakeDuration == null || instance.earthquakeDuration <= 0
+	                      				|| instance.totalDuration == null || instance.totalDuration <= 0}"
+	                      			style="color:orange"
+	                      			data-toggle="tooltip" data-placement="top" title="Some data for this instance is missing">
+	                      		<i class="fas fa-exclamation-triangle"></i>
+	                      		&nbsp;
+	                      	</span>
+	                      	<span th:text="${instance.id}"/>
+	                      </td>
+	                      <td th:text="${#dates.format(instance.startTime, 'dd MMM yyyy HH:mm:ss')}" />
+	                      <td th:text="${instance.totalDuration}" />
+	                      <td>
+	                      	<a th:href="@{/instances/{id}(id=${instance.id})}"><i class="fas fa-search"></i></a>
+	                      </td>
+	                    </tr>
+	                  </tbody>
+	                </table>
+	              </div>
+	           </div>
+            </div>
+        </div>
+	  </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <th:block layout:fragment="script" th:inline="javascript">
+    <script>
+      $(function () {
+  	    $('[data-toggle="tooltip"]').tooltip()
+  	  })
+    </script>
+  </th:block>
+
+</body>
+</html>

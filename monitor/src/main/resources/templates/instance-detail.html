@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+  <title th:text="@{'Instance ' + ${instanceId}}"></title>
+</head>
+<body>
+  <div class="content-wrapper" layout:fragment="content">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark" th:text="@{'Details of instance ' + ${instanceId}}">Instance Details</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+              <li class="breadcrumb-item"><a th:href="@{/instances}">Instances</a></li>
+              <li class="breadcrumb-item active" th:text="${instanceId}">Instance Detail</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+       	  <div class="col-12">
+	          <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Task timeline</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="instanceTimelineChart"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+        </div>
+	  </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<script layout:fragment="script" th:inline="javascript">
+/*<![CDATA[*/
+  $(function () {
+
+    [# th:if="${not #lists.isEmpty(instance.missingData)}"]
+	  toastr.options = {
+	    "closeButton": true,
+	    "debug": false,
+	    "newestOnTop": false,
+	    "progressBar": false,
+	    "positionClass": "toast-top-right",
+	    "preventDuplicates": false,
+	    "onclick": null,
+	    "showDuration": "300",
+	    "hideDuration": "1000",
+	    "timeOut": "0",
+	    "extendedTimeOut": "0",
+	    "showEasing": "swing",
+	    "hideEasing": "linear",
+	    "showMethod": "fadeIn",
+	    "hideMethod": "fadeOut"
+	  }
+	  toastr.warning('Some data about performed tasks is missing. Some tasks may be not showed, or start or end time may be missing.', 'Missing data')
+	[/]
+ 
+    var instanceTimelineChartCanvas = $('#instanceTimelineChart');
+
+    var instanceTimelineChartOptions = {
+      responsive              : true,
+//       maintainAspectRatio     : false,
+//       datasetFill             : false,
+      scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            },
+            gridLines: {
+		        offsetGridLines: false
+		    }
+        }]
+      }
+    };
+
+    var labels = [
+    	/*[# th:each="task : ${instance.tasks}"]*/ 
+    		/*[[${task.name}]]*/,
+   		/*[/]*/
+    ]; 
+
+    var data = [
+    	/*[# th:each="task : ${instance.tasks}"]*/ 
+    	[
+    		/*[[${task.relativeStartTime}]]*/,/*[[${task.relativeEndTime}]]*/
+   		],
+   		/*[/]*/
+    ]; 
+
+    var instanceTimelineChartData = {
+    		labels: labels,
+            datasets: [
+              {
+                label: 'Task execution timeline (data in ms)',
+                data: data,
+                borderColor: 'rgba(62, 114, 153, 0.8)',
+                backgroundColor: 'rgba(62, 114, 153, 0.8)',
+              }
+            ]
+        };
+
+    var instanceTimelineChart = new Chart(instanceTimelineChartCanvas, {
+      type: 'horizontalBar', 
+      data: instanceTimelineChartData,
+      options: instanceTimelineChartOptions
+    });
+
+  });
+  /*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:caCDMobileApp="http://it.univaq.connectpa.publicbillposting/caCDMobileApp" xmlns:caCDMobileApp_1="http://it.univaq.connectpa.publicbillposting.sia/caCDMobileApp" xmlns:caCDPosterService="http://it.univaq.connectpa.publicbillposting/caCDPosterService" xmlns:cart="http://it.univaq.connectpa.publicbillposting/cart" xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager" xmlns:mobileapp="http://it.univaq.connectpa.publicbillposting/mobileapp">
+  <process name="caCDMobileApp:caCDMobileAppProcess.bpel">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="Client">
+      <service name="caCDMobileApp:caCDMobileAppService" port="caCDMobileAppPort"/>
+    </provide>
+    <provide partnerLink="ClientCoordination">
+      <service name="caCDMobileApp:caCDMobileAppService" port="caCDMobileAppCoordinationPort"/>
+    </provide>
+    <invoke partnerLink="MobileApp">
+      <service name="mobileapp:mobileAppService" port="mobileAppPort"/>
+    </invoke>
+    <invoke partnerLink="Cart">
+      <service name="cart:cartService" port="cartPort"/>
+    </invoke>
+    <invoke partnerLink="CaCDPosterService">
+      <service name="caCDPosterService:caCDPosterService" port="caCDPosterServicePort"/>
+    </invoke>
+    <invoke partnerLink="ContextManager">
+      <service name="contextmanager:contextManagerService" port="ContextManagerPort"/>
+    </invoke>
+  </process>
+  <process name="caCDMobileApp_1:InvocationAddressService">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="SIAService">
+      <service name="caCDMobileApp_1:cdMobileAppSetInvocationAddressService" port="SetInvocationAddressServicePort"/>
+    </provide>
+  </process>
+</deploy>

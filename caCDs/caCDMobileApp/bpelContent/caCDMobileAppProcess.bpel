@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="caCDMobileAppProcess.bpel"
+    targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://it.univaq.connectpa.publicbillposting/caCDMobileApp/Artifacts"
+    xmlns:client="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"
+	xmlns:mobileapp="http://it.univaq.connectpa.publicbillposting/mobileapp"
+	xmlns:cacdposterservice="http://it.univaq.connectpa.publicbillposting/caCDPosterService"
+	xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager"
+	xmlns:cart="http://it.univaq.connectpa.publicbillposting/cart"
+    xmlns:properties="http://it.univaq.connectpa.publicbillposting/properties">
+
+	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="mobileapp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/mobileapp"/>
+	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="cart.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/cart"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDMobileApp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDPosterService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="contextmanager.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/contextmanager"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="propertiesAliases.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/propertiesAliases"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDMobileAppArtifacts.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp/Artifacts"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="properties.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/properties"/>
+
+    <bpel:partnerLinks>
+        <bpel:partnerLink name="Client" myRole="Client" partnerLinkType="ns:ClientPLT"/>
+        <bpel:partnerLink name="ClientCoordination" myRole="ClientCoordination" partnerLinkType="ns:ClientCoordinationPLT"/>
+        <bpel:partnerLink name="MobileApp" partnerRole="MobileApp" partnerLinkType="ns:MobileAppPLT"/>
+        <bpel:partnerLink name="Cart" partnerRole="Cart" partnerLinkType="ns:CartPLT"/>
+        <bpel:partnerLink name="CaCDPosterService" partnerRole="CaCDPosterService" partnerLinkType="ns:CaCDPosterServicePLT"/>
+        <bpel:partnerLink name="ContextManager" partnerRole="ContextManager" partnerLinkType="ns:ContextManagerPLT"/>
+    </bpel:partnerLinks>
+
+    <bpel:variables>
+        <bpel:variable messageType="client:postRequest" name="postRequest"/>
+        <bpel:variable messageType="cacdposterservice:postRequest" name="postRequestFW"/>
+        <bpel:variable messageType="contextmanager:acquirePostRequestMessageRequest" name="acquirePostRequestMessageRequest"/>
+
+		<bpel:variable messageType="client:postResponse" name="postResponse"/>
+        <bpel:variable messageType="mobileapp:postResponse" name="postResponseFW"/>
+
+        <bpel:variable messageType="client:addSpaceRequest" name="addSpaceRequest"/>
+        <bpel:variable messageType="cart:addSpaceRequest" name="addSpaceRequestFW"/>
+
+        <bpel:variable messageType="client:removeSpaceRequest" name="removeSpaceRequest"/>
+        <bpel:variable messageType="cart:removeSpaceRequest" name="removeSpaceRequestFW"/>
+        
+        <bpel:variable messageType="client:confirmationRequest" name="confirmationRequest"/>
+        <bpel:variable messageType="cacdposterservice:confirmationRequest" name="confirmationRequestFW"/>
+
+        <bpel:variable messageType="client:getBillingRequest" name="getBillingRequest"/>
+        <bpel:variable messageType="cacdposterservice:getBillingRequest" name="getBillingRequestFW"/>
+
+        <bpel:variable messageType="cacdposterservice:billingDetails" name="billingDetails"/>
+        <bpel:variable messageType="client:billingDetails" name="billingDetailsFW"/>
+
+        <bpel:variable messageType="client:paymentData" name="paymentData"/>
+        <bpel:variable messageType="cacdposterservice:paymentData" name="paymentDataFW"/>
+
+        <bpel:variable messageType="client:receipt" name="receipt"/>
+        <bpel:variable messageType="mobileapp:receipt" name="receiptFW"/>
+
+        <bpel:variable messageType="client:paymentInvoice" name="paymentInvoice"/>
+        <bpel:variable messageType="mobileapp:paymentInvoice" name="paymentInvoiceFW"/>
+
+		<bpel:variable messageType="client:getBillingCoordinationRequest" name="getBillingSYNCH"/>
+
+		<bpel:variable name="myName" type="xsd:string"/>
+		<bpel:variable name="mobileAppName" type="xsd:string"/>
+		<bpel:variable name="mobileAppAddress" type="xsd:string"/>
+		<bpel:variable name="cartName" type="xsd:string"/>
+		<bpel:variable name="cartAddress" type="xsd:string"/>
+		<bpel:variable name="caCDPosterServiceName" type="xsd:string"/>
+		<bpel:variable name="caCDPosterServiceAddress" type="xsd:string"/>
+		<bpel:variable name="contextManagerName" type="xsd:string"/>
+		<bpel:variable name="contextManagerAddress" type="xsd:string"/>
+    </bpel:variables>
+
+	<bpel:correlationSets>
+		<bpel:correlationSet
+			name="InstanceID" properties="properties:instanceID" />
+	</bpel:correlationSets>
+
+    <bpel:sequence name="MainSequence">
+		
+		<bpel:pick createInstance="yes" name="StartExecution">
+
+			<bpel:onMessage
+				partnerLink="Client"
+	            portType="client:caCDMobileAppPT"
+	            operation="SendPostRequest"
+	            variable="postRequest">
+	
+	            <bpel:correlations>
+					<bpel:correlation initiate="join" set="InstanceID" />
+				</bpel:correlations>
+	
+				<bpel:sequence name="CaCDMobileAppSequence">
+	
+					<!-- Instancing name and address variables -->
+					<!-- Client -->
+					<bpel:assign name="assign_myName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>caCDMobileApp</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="myName"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- MobileApp -->
+			        <bpel:assign name="assign_mobileAppName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>mobileapp</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="mobileAppName"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_mobileAppAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="MobileApp"/>
+			            <bpel:to variable="mobileAppAddress"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_mobileAppAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $mobileAppName, $mobileAppAddress)]]></bpel:from>
+			            <bpel:to partnerLink="MobileApp"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- Cart -->
+			        <bpel:assign name="assign_cartName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>cart</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="cartName"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_cartAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="Cart"/>
+			            <bpel:to variable="cartAddress"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_cartAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $cartName, $cartAddress)]]></bpel:from>
+			            <bpel:to partnerLink="Cart"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- CaCDPosterService -->
+			        <bpel:assign name="assign_caCDPosterServiceName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>caCDPosterService</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="caCDPosterServiceName"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_caCDPosterServiceAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="CaCDPosterService"/>
+			            <bpel:to variable="caCDPosterServiceAddress"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_caCDPosterServiceAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $caCDPosterServiceName, $caCDPosterServiceAddress)]]></bpel:from>
+			            <bpel:to partnerLink="CaCDPosterService"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- ContextManager -->
+			        <bpel:assign name="assign_contextManagerName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>contextmanager</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="contextManagerName"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_contextManagerAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="ContextManager"/>
+			            <bpel:to variable="contextManagerAddress"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_contextManagerAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $contextManagerName, $contextManagerAddress)]]></bpel:from>
+			            <bpel:to partnerLink="ContextManager"/>
+			          </bpel:copy>
+			        </bpel:assign>
+			        <!-- \Instancing name and address variables -->
+
+			        <bpel:assign name="assign_postRequestFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="postRequest" part="request" />
+							<bpel:to variable="postRequestFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke
+						inputVariable="postRequestFW"
+						name="invoke_SendPostRequest"
+						operation="SendPostRequest"
+						partnerLink="CaCDPosterService"/>
+
+					<!-- Send context-carrying message postRequest to the Context Manager -->
+					 <bpel:assign name="assign_acquirePostRequestMessageRequest">
+						<bpel:copy>
+							<bpel:from>
+								<bpel:literal>
+									<![CDATA[
+									<ns1:acquirePostRequestMessageRequest xmlns:ns1="http://it.univaq.connectpa.publicbillposting/contextmanager" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+										<instanceId>instanceId</instanceId>
+								        <message></message>
+									</ns1:acquirePostRequestMessageRequest>
+									]]>
+								</bpel:literal>
+							</bpel:from>
+							<bpel:to variable="acquirePostRequestMessageRequest" part="request" />
+						</bpel:copy>
+						<bpel:copy>
+							<bpel:from variable="postRequest" part="request" />
+							<bpel:to variable="acquirePostRequestMessageRequest" part="request">
+								<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+									<![CDATA[message]]>
+								</bpel:query>
+							</bpel:to>
+						</bpel:copy>
+					</bpel:assign>
+
+					<bpel:invoke
+						inputVariable="acquirePostRequestMessageRequest"
+						name="invoke_AcquirePostRequestMessage"
+						operation="AcquirePostRequestMessage"
+						partnerLink="ContextManager"/>
+
+					<!-- Reply -->
+					<bpel:receive creteInstance="join"
+						partnerLink="Client"
+			            portType="client:caCDMobileAppPT"
+			            operation="Reply"
+			            variable="postResponse">
+				
+			           	<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+			  		</bpel:receive>
+					    		
+			        <bpel:assign name="assign_postResponseFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="postResponse" part="request" />
+							<bpel:to variable="postResponseFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke
+						inputVariable="postResponseFW"
+						name="invoke_SendPostResponse"
+						operation="Reply"
+						partnerLink="MobileApp"/>
+			
+					<bpel:pick createInstance="no" name="SwitchInvokedOperation">
+						<!-- Add Space -->
+						<bpel:onMessage creteInstance="join"
+							partnerLink="Client"
+				            portType="client:caCDMobileAppPT"
+				            operation="AddSpace"
+				            variable="addSpaceRequest">
+			
+			            	<bpel:correlations>
+								<bpel:correlation initiate="join" set="InstanceID" />
+							</bpel:correlations>
+			
+			            	<bpel:sequence>
+			
+								<bpel:assign name="assign_addSpaceRequestFW" validate="no">
+									<bpel:copy>
+										<bpel:from variable="addSpaceRequest" part="request" />
+										<bpel:to variable="addSpaceRequestFW" part="request" />
+									</bpel:copy>
+								</bpel:assign>
+						
+								<bpel:invoke
+									inputVariable="addSpaceRequestFW"
+									name="invoke_AddSpace"
+									operation="AddSpace"
+									partnerLink="Cart"/>
+			            	</bpel:sequence>
+			            </bpel:onMessage>
+			
+						<!-- Remove Space -->
+						<bpel:onMessage creteInstance="join"
+							partnerLink="Client"
+				            portType="client:caCDMobileAppPT"
+				            operation="RemoveSpace"
+				            variable="removeSpaceRequest">
+			
+			            	<bpel:correlations>
+								<bpel:correlation initiate="join" set="InstanceID" />
+							</bpel:correlations>
+			
+			            	<bpel:sequence>
+			
+								<bpel:assign name="assign_removeSpaceRequestFW" validate="no">
+									<bpel:copy>
+										<bpel:from variable="removeSpaceRequest" part="request" />
+										<bpel:to variable="removeSpaceRequestFW" part="request" />
+									</bpel:copy>
+								</bpel:assign>
+						
+								<bpel:invoke
+									inputVariable="removeSpaceRequestFW"
+									name="invoke_RemoveSpace"
+									operation="RemoveSpace"
+									partnerLink="Cart"/>
+			            	</bpel:sequence>
+			            </bpel:onMessage>
+					</bpel:pick>
+			
+					<!-- Send Confirmation -->
+					<bpel:receive creteInstance="join"
+						partnerLink="Client"
+			            portType="client:caCDMobileAppPT"
+			            operation="SendConfirmation"
+			            variable="confirmationRequest">
+				
+			           	<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+			  		</bpel:receive>
+					    		
+			        <bpel:assign name="assign_confirmationRequestFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="confirmationRequest" part="request" />
+							<bpel:to variable="confirmationRequestFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke
+						inputVariable="confirmationRequestFW"
+						name="invoke_SendConfirmation"
+						operation="SendConfirmation"
+						partnerLink="CaCDPosterService"/>
+
+					<!-- Receive SYNCH message for Get Billing -->
+					<bpel:receive creteInstance="join"
+						partnerLink="ClientCoordination"
+			            portType="client:caCDMobileAppCoordinationPT"
+			            operation="CoordinateGetBilling"
+			            variable="getBillingSYNCH">
+
+			            <bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+					</bpel:receive>
+			
+					<!-- Get Billing -->
+					<bpel:receive creteInstance="join"
+						partnerLink="Client"
+			            portType="client:caCDMobileAppPT"
+			            operation="GetBilling"
+			            variable="getBillingRequest">
+				
+			           	<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+			  		</bpel:receive>
+					    		
+			        <bpel:assign name="assign_getBillingRequestFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="getBillingRequest" part="request" />
+							<bpel:to variable="getBillingRequestFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke
+						inputVariable="getBillingRequestFW"
+						name="invoke_GetBilling"
+						operation="GetBilling"
+						partnerLink="CaCDPosterService"
+						outputVariable="billingDetails"/>
+			
+					<bpel:assign name="assign_billingDetailsFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="billingDetails" part="response" />
+							<bpel:to variable="billingDetailsFW" part="response" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:reply
+						partnerLink="Client"
+			            portType="client:caCDMobileAppPT"
+			            operation="GetBilling"
+			            variable="billingDetails">
+
+						<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+					</bpel:reply>
+			
+					<!-- Start Payment Process -->
+					<bpel:receive creteInstance="join"
+						partnerLink="Client"
+			            portType="client:caCDMobileAppPT"
+			            operation="StartPaymentProcess"
+			            variable="paymentData">
+				
+			           	<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>
+			  		</bpel:receive>
+					    		
+			        <bpel:assign name="assign_paymentDataFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="paymentData" part="request" />
+							<bpel:to variable="paymentDataFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke
+						inputVariable="paymentDataFW"
+						name="invoke_StartPaymentProcess"
+						operation="StartPaymentProcess"
+						partnerLink="CaCDPosterService"/>
+			
+					<bpel:pick createInstance="no" name="SwitchInvokedOperation">
+						<!-- Reply With Receipt -->
+						<bpel:onMessage creteInstance="join"
+							partnerLink="Client"
+				            portType="client:caCDMobileAppPT"
+				            operation="ReplyWithReceipt"
+				            variable="receipt">
+			
+			            	<bpel:correlations>
+								<bpel:correlation initiate="join" set="InstanceID" />
+							</bpel:correlations>
+			
+			            	<bpel:sequence>
+			
+								<bpel:assign name="assign_receiptFW" validate="no">
+									<bpel:copy>
+										<bpel:from variable="receipt" part="request" />
+										<bpel:to variable="receiptFW" part="request" />
+									</bpel:copy>
+								</bpel:assign>
+						
+								<bpel:invoke
+									inputVariable="receiptFW"
+									name="invoke_ReplyWithReceipt"
+									operation="ReplyWithReceipt"
+									partnerLink="MobileApp"/>
+			            	</bpel:sequence>
+			            </bpel:onMessage>
+			
+						<!-- Reply With Invoice -->
+						<bpel:onMessage creteInstance="join"
+							partnerLink="Client"
+				            portType="client:caCDMobileAppPT"
+				            operation="ReplyWithInvoice"
+				            variable="paymentInvoice">
+			
+			            	<bpel:correlations>
+								<bpel:correlation initiate="join" set="InstanceID" />
+							</bpel:correlations>
+			
+			            	<bpel:sequence>
+			
+								<bpel:assign name="assign_paymentInvoiceFW" validate="no">
+									<bpel:copy>
+										<bpel:from variable="paymentInvoice" part="request" />
+										<bpel:to variable="paymentInvoiceFW" part="request" />
+									</bpel:copy>
+								</bpel:assign>
+						
+								<bpel:invoke
+									inputVariable="paymentInvoiceFW"
+									name="invoke_ReplyWithInvoice"
+									operation="ReplyWithInvoice"
+									partnerLink="MobileApp"/>
+			            	</bpel:sequence>
+			            </bpel:onMessage>
+					</bpel:pick>
+				</bpel:sequence>
+			</bpel:onMessage>
+		</bpel:pick>
+    </bpel:sequence>
+</bpel:process>

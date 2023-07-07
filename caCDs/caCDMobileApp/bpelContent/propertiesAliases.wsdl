@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	name="propertiesAliases"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/propertiesAliases"
+	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:cacdmobileapp="http://it.univaq.connectpa.publicbillposting/caCDMobileApp">	
+
+  <import location="caCDMobileApp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"/>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:postRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:confirmationRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:getBillingRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:billingDetails" part="response" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:paymentData" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:addSpaceRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:removeSpaceRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:postResponse" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:receipt" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:paymentInvoice" part="request" propertyName="properties:instanceID">
+    <vprop:query>requestID</vprop:query>
+  </vprop:propertyAlias>
+
+  <vprop:propertyAlias messageType="cacdmobileapp:getBillingCoordinationRequest" part="request" propertyName="properties:instanceID">
+    <vprop:query>instanceId</vprop:query>
+  </vprop:propertyAlias>
+</definitions>

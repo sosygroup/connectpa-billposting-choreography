@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:caCDPaymentService="http://it.univaq.connectpa.publicbillposting/caCDPaymentService" xmlns:caCDPaymentService_1="http://it.univaq.connectpa.publicbillposting.sia/caCDPaymentService" xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager" xmlns:municipalityposterservice="http://it.univaq.connectpa.publicbillposting/municipalityposterservice" xmlns:paymentservice="http://it.univaq.connectpa.publicbillposting/paymentservice">
+  <process name="caCDPaymentService:caCDPaymentServiceProcess.bpel">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="Client">
+      <service name="caCDPaymentService:caCDPaymentService" port="caCDPaymentServicePort"/>
+    </provide>
+    <invoke partnerLink="PaymentService">
+      <service name="paymentservice:paymentService" port="paymentServicePort"/>
+    </invoke>
+    <invoke partnerLink="PaymentServiceConsumer">
+      <service name="paymentservice:paymentService" port="paymentServiceConsumerPort"/>
+    </invoke>
+    <invoke partnerLink="MunicipalityPosterService">
+      <service name="municipalityposterservice:municipalityPosterService" port="municipalityPosterServicePort"/>
+    </invoke>
+    <invoke partnerLink="ContextManager">
+      <service name="contextmanager:contextManagerService" port="ContextManagerPort"/>
+    </invoke>
+  </process>
+  <process name="caCDPaymentService_1:InvocationAddressService">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="SIAService">
+      <service name="caCDPaymentService_1:caCDPaymentServiceSetInvocationAddressService" port="SetInvocationAddressServicePort"/>
+    </provide>
+  </process>
+</deploy>

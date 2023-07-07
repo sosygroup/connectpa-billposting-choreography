@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="properties"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/properties">
+	<vprop:property name="instanceID" type="xsd:string" />
+</definitions>

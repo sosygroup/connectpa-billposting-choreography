@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpel:process exitOnStandardFault="yes" name="caCDPaymentServiceProcess.bpel"
+    targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:ns="http://it.univaq.connectpa.publicbillposting/caCDPaymentService/Artifacts"
+    xmlns:client="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"
+	xmlns:paymentservice="http://it.univaq.connectpa.publicbillposting/paymentservice"
+	xmlns:municipalityposterservice="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"
+	xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager"
+    xmlns:properties="http://it.univaq.connectpa.publicbillposting/properties">
+
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDPaymentService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="paymentservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/paymentservice"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="municipalityposterservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="contextmanager.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/contextmanager"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="caCDPaymentServiceArtifacts.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService/Artifacts"/>
+  	<bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="propertiesAliases.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/propertiesAliases"/>
+    <bpel:import importType="http://schemas.xmlsoap.org/wsdl/" location="properties.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/properties"/>
+
+    <bpel:partnerLinks>
+        <bpel:partnerLink name="Client" myRole="Client" partnerLinkType="ns:ClientPLT"/>
+        <bpel:partnerLink name="PaymentService" partnerRole="PaymentService" partnerLinkType="ns:PaymentServicePLT"/>
+        <bpel:partnerLink name="PaymentServiceConsumer" partnerRole="PaymentServiceConsumer" partnerLinkType="ns:PaymentServiceConsumerPLT"/>
+        <bpel:partnerLink name="MunicipalityPosterService" partnerRole="MunicipalityPosterService" partnerLinkType="ns:MunicipalityPosterServicePLT"/>
+        <bpel:partnerLink name="ContextManager" partnerRole="ContextManager" partnerLinkType="ns:ContextManagerPLT"/>
+    </bpel:partnerLinks>
+
+    <bpel:variables>
+        <bpel:variable messageType="client:paymentData" name="paymentData"/>
+        <bpel:variable messageType="paymentservice:paymentData" name="paymentDataFW"/>
+
+        <bpel:variable messageType="paymentservice:receipt" name="receipt"/>
+		<bpel:variable messageType="client:receipt" name="receiptFW"/>
+
+		<bpel:variable messageType="contextmanager:selectMunicipalityPosterServiceRequest" name="selectMunicipalityPosterServiceRequest"/>
+		<bpel:variable messageType="contextmanager:selectMunicipalityPosterServiceResponse" name="selectMunicipalityPosterServiceResponse"/>
+
+		<bpel:variable name="myName" type="xsd:string"/>
+		<bpel:variable name="paymentServiceName" type="xsd:string"/>
+		<bpel:variable name="paymentServiceAddress" type="xsd:string"/>
+		<bpel:variable name="paymentServiceConsumerName" type="xsd:string"/>
+		<bpel:variable name="paymentServiceConsumerAddress" type="xsd:string"/>
+		<bpel:variable name="contextManagerName" type="xsd:string"/>
+		<bpel:variable name="contextManagerAddress" type="xsd:string"/>
+
+		<bpel:variable name="municipalitiesCounter" type="xsd:integer"/>
+    </bpel:variables>
+
+	<bpel:correlationSets>
+		<bpel:correlationSet
+			name="InstanceID" properties="properties:instanceID" />
+	</bpel:correlationSets><bpel:sequence name="MainSequence">
+		
+		<bpel:pick createInstance="yes" name="StartExecution">
+
+			<bpel:onMessage partnerLink="Client" portType="client:caCDPaymentServicePT" operation="SendPayment" variable="paymentData">
+	
+	            <bpel:correlations>
+					<bpel:correlation initiate="join" set="InstanceID" />
+				</bpel:correlations>
+	
+				<bpel:sequence name="CaCDPaymentServiceSequence">
+	
+					<!-- Instancing name and address variables -->
+					<!-- Client -->
+					<bpel:assign name="assign_myName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>caCDPaymentService</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="myName" />
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- Payment Service -->
+			        <bpel:assign name="assign_paymentServiceName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>paymentservice</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="paymentServiceName" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_paymentServiceAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="PaymentService" />
+			            <bpel:to variable="paymentServiceAddress" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_paymentServiceAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $paymentServiceName, $paymentServiceAddress)]]></bpel:from>
+			            <bpel:to partnerLink="PaymentService" />
+			          </bpel:copy>
+			        </bpel:assign>
+
+					<!-- Payment Service Consumer -->
+			        <bpel:assign name="assign_paymentServiceConsumerName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>paymentservice-consumer</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="paymentServiceConsumerName" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_paymentServiceConsumerAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="PaymentServiceConsumer" />
+			            <bpel:to variable="paymentServiceConsumerAddress" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_paymentServiceConsumerAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $paymentServiceConsumerName, $paymentServiceConsumerAddress)]]></bpel:from>
+			            <bpel:to partnerLink="PaymentServiceConsumer" />
+			          </bpel:copy>
+			        </bpel:assign>
+			
+					<!-- ContextManager -->
+			        <bpel:assign name="assign_contextManagerName" validate="no">
+			          <bpel:copy>
+			            <bpel:from>
+			              <bpel:literal>contextmanager</bpel:literal>
+			            </bpel:from>
+			            <bpel:to variable="contextManagerName" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="assign_default_contextManagerAddress" validate="no">
+			          <bpel:copy>
+			            <bpel:from endpointReference="partnerRole" partnerLink="ContextManager" />
+			            <bpel:to variable="contextManagerAddress" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <bpel:assign name="get_contextManagerAddress" validate="no">
+			          <bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:getParticipantAddress($myName, $contextManagerName, $contextManagerAddress)]]></bpel:from>
+			            <bpel:to partnerLink="ContextManager" />
+			          </bpel:copy>
+			        </bpel:assign>
+			        <!-- \Instancing name and address variables -->
+			
+			        <bpel:assign name="assign_paymentDataFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="paymentData" part="request" />
+							<bpel:to variable="paymentDataFW" part="request" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:invoke inputVariable="paymentDataFW" name="invoke_SendPayment" operation="SendPayment" partnerLink="PaymentService" outputVariable="receipt" />
+
+					<bpel:assign name="assign_receiptFW" validate="no">
+						<bpel:copy>
+							<bpel:from variable="receipt" part="response" />
+							<bpel:to variable="receiptFW" part="response" />
+						</bpel:copy>
+					</bpel:assign>
+			
+					<bpel:reply partnerLink="Client" portType="client:caCDPaymentServicePT" operation="SendPayment" variable="receiptFW">
+
+						<bpel:correlations>
+							<bpel:correlation initiate="join" set="InstanceID" />
+						</bpel:correlations>	
+		            </bpel:reply>
+
+					<!-- Payment Confirmation -->
+					<!-- Select Municipality Poster Service Instances -->
+					<bpel:assign name="assign_selectMunicipalityPosterServiceRequest">
+						<bpel:copy>
+							<bpel:from>
+								<bpel:literal>
+									<![CDATA[
+									<ns1:selectMunicipalityPosterServiceRequest xmlns:ns1="http://it.univaq.connectpa.publicbillposting/contextmanager" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+										<instanceId>InstanceID</instanceId>
+									</ns1:selectMunicipalityPosterServiceRequest>
+									]]>
+								</bpel:literal>
+							</bpel:from>
+							<bpel:to variable="selectMunicipalityPosterServiceRequest" part="request" />
+						</bpel:copy>
+						<bpel:copy>
+							<bpel:from property="properties:instanceID" variable="paymentData" part="request" />
+							<bpel:to variable="selectMunicipalityPosterServiceRequest" part="request">
+								<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+									<![CDATA[instanceId]]>
+								</bpel:query>
+							</bpel:to>
+						</bpel:copy>
+					</bpel:assign>
+
+					<bpel:invoke inputVariable="selectMunicipalityPosterServiceRequest" name="invoke_SelectMunicipalityPosterService" operation="SelectMunicipalityPosterService" partnerLink="ContextManager" outputVariable="selectMunicipalityPosterServiceResponse" />
+
+					<!-- Execute task for each selected instance -->
+					<bpel:forEach counterName="municipalitiesCounter" name="PaymentConfirmation" parallel="yes">
+						<bpel:startCounterValue>1</bpel:startCounterValue>
+						<bpel:finalCounterValue><![CDATA[count($selectMunicipalityPosterServiceResponse.response/selected)]]></bpel:finalCounterValue>
+						<bpel:scope>
+
+							<bpel:variables>
+								<bpel:variable name="selectedMunicipality" type="contextmanager:serviceInstance" />
+								<bpel:variable name="municipalityPosterServiceName" type="xsd:string" />
+								<bpel:variable name="municipalityPosterServiceAddress" type="xsd:string" />
+								
+						        <bpel:variable messageType="paymentservice:getPaymentConfirmationMessageRequest" name="getPaymentConfirmationMessageRequest" />
+						        <bpel:variable messageType="paymentservice:getPaymentConfirmationMessageResponse" name="getPaymentConfirmationMessageResponse" />
+								<bpel:variable messageType="municipalityposterservice:paymentConfirmation" name="paymentConfirmation" />
+							</bpel:variables>
+
+
+							<bpel:sequence name="PaymentConfirmationSequence">
+								<bpel:assign name="assign_selectedMunicipality">
+									<bpel:copy>
+										<bpel:from>
+											<![CDATA[$selectMunicipalityPosterServiceResponse.response/selected[round($municipalitiesCounter)]]]>
+										</bpel:from>
+										<bpel:to variable="selectedMunicipality" />
+									</bpel:copy>
+								</bpel:assign>
+	
+								<bpel:assign name="assign_municipalityPosterServiceName">
+									<bpel:copy>
+										<bpel:from variable="selectedMunicipality">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[name]]>
+											</bpel:query>
+										</bpel:from>
+										<bpel:to variable="municipalityPosterServiceName" />
+									</bpel:copy>
+								</bpel:assign>
+		
+								<bpel:assign name="assign_municipalityPosterServiceAddress">
+									<bpel:copy>
+										<bpel:from variable="selectedMunicipality">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[address]]>
+											</bpel:query>
+										</bpel:from>
+										<bpel:to variable="municipalityPosterServiceAddress" />
+									</bpel:copy>
+								</bpel:assign>
+
+								<!-- Invoke prosumer -->
+								<bpel:assign name="assign_getPaymentConfirmationMessageRequest">
+									<bpel:copy>
+										<bpel:from>
+											<bpel:literal>
+												<![CDATA[
+												<ns1:getPaymentConfirmationMessageRequest xmlns:ns1="http://it.univaq.connectpa.publicbillposting/paymentservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+													<instanceId>instanceId</instanceId>
+											         <contextRef>contextRef</contextRef>
+											         <serviceContext>
+											            <referenceLatitude>0.0</referenceLatitude>
+											            <referenceLongitude>0.0</referenceLongitude>
+											         </serviceContext>
+												</ns1:getPaymentConfirmationMessageRequest>
+												]]>
+											</bpel:literal>
+										</bpel:from>
+										<bpel:to variable="getPaymentConfirmationMessageRequest" part="request" />
+									</bpel:copy>
+									<bpel:copy>
+										<bpel:from property="properties:instanceID" variable="paymentData" part="request" />
+										<bpel:to variable="getPaymentConfirmationMessageRequest" part="request">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[instanceId]]>
+											</bpel:query>
+										</bpel:to>
+									</bpel:copy>
+									<bpel:copy>
+										<bpel:from variable="selectedMunicipality">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[name]]>
+											</bpel:query>
+										</bpel:from>
+										<bpel:to variable="getPaymentConfirmationMessageRequest" part="request">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[contextRef]]>
+											</bpel:query>
+										</bpel:to>
+									</bpel:copy>
+									<bpel:copy>
+										<bpel:from variable="selectedMunicipality">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[serviceContext/referenceLatitude]]>
+											</bpel:query>
+										</bpel:from>
+										<bpel:to variable="getPaymentConfirmationMessageRequest" part="request">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[serviceContext/referenceLatitude]]>
+											</bpel:query>
+										</bpel:to>
+									</bpel:copy>
+									<bpel:copy>
+										<bpel:from variable="selectedMunicipality">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[serviceContext/referenceLongitude]]>
+											</bpel:query>
+										</bpel:from>
+										<bpel:to variable="getPaymentConfirmationMessageRequest" part="request">
+											<bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+												<![CDATA[serviceContext/referenceLongitude]]>
+											</bpel:query>
+										</bpel:to>
+									</bpel:copy>
+								</bpel:assign>
+
+								<bpel:invoke inputVariable="getPaymentConfirmationMessageRequest" name="invoke_getPaymentConfirmationMessage" operation="getPaymentConfirmationMessage" partnerLink="PaymentServiceConsumer" outputVariable="getPaymentConfirmationMessageResponse" />
+
+								<!-- Invoke service -->
+								<bpel:assign name="assign_paymentConfirmation" validate="no">
+									<bpel:copy>
+										<bpel:from variable="getPaymentConfirmationMessageResponse" part="response" />
+										<bpel:to variable="paymentConfirmation" part="request" />
+									</bpel:copy>
+								</bpel:assign>
+
+								<bpel:assign name="assign_MunicipalityPosterServicePLAddress">
+									<bpel:copy xmlns:siaendpointsmanager="java:it.univaq.connectpa.publicbillposting.sia.endpoints.manager.services.SiaEndpointsManagerService">
+	            			            <bpel:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[siaendpointsmanager:returnParticipantAddress($municipalityPosterServiceAddress)]]></bpel:from>
+										<bpel:to partnerLink="MunicipalityPosterService" />
+									</bpel:copy>
+								</bpel:assign>
+
+								<bpel:invoke inputVariable="paymentConfirmation" name="invoke_paymentConfirmation" operation="PaymentConfirmation" partnerLink="MunicipalityPosterService" />
+							</bpel:sequence>
+						</bpel:scope>
+					</bpel:forEach>
+
+				</bpel:sequence>
+			</bpel:onMessage>
+		</bpel:pick>
+    </bpel:sequence></bpel:process>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/caCDPosterService"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="caCDPosterService"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService">
+
+		<xsd:element name="postRequest" type="tns:postRequest"/>
+		<xsd:element name="confirmationRequest" type="tns:confirmationRequest"/>
+		<xsd:element name="getBillingRequest" type="tns:getBillingRequest"/>
+		<xsd:element name="billingDetails" type="tns:billingDetails"/>
+		<xsd:element name="paymentData" type="tns:paymentData"/>
+
+		<xsd:complexType name="postRequest">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="startDate" type="xsd:date"/>
+				<xsd:element name="endDate" type="xsd:date"/>
+				<xsd:element name="locationCoordinates">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="latitude" type="xsd:double"/>
+							<xsd:element name="longitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="locationName" type="xsd:string"/>
+				<xsd:element name="searchRadius" type="xsd:int"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="confirmationRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="getBillingRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="billingDetails">
+	    	<xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="totalAmount" type="xsd:double" />
+		  	  <xsd:element name="bills" type="tns:paymentBill" maxOccurs="unbounded" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentBill">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="municipalityCode" type="xsd:string" />
+			  <xsd:element name="municipalityName" type="xsd:string" />
+			  <xsd:element name="confirmed" type="xsd:boolean"/>
+		      <xsd:element name="amountDue" type="xsd:double" />
+		      <xsd:element name="billingCode" type="xsd:string" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentData">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="billingCode" type="xsd:string" />
+		      <xsd:element name="amountDue" type="xsd:double" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="postRequest">
+  	<wsdl:part element="tns:postRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="confirmationRequest">
+  	<wsdl:part element="tns:confirmationRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getBillingRequest">
+  	<wsdl:part element="tns:getBillingRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="billingDetails">
+  	<wsdl:part element="tns:billingDetails" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="paymentData">
+  	<wsdl:part element="tns:paymentData" name="request"/>
+  </wsdl:message>
+ 
+  <wsdl:portType name="caCDPosterServicePT">
+    <wsdl:operation name="SendPostRequest">
+      <wsdl:input message="tns:postRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <wsdl:input message="tns:confirmationRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <wsdl:input message="tns:getBillingRequest"/>
+      <wsdl:output message="tns:billingDetails"/>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <wsdl:input message="tns:paymentData"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="caCDPosterServiceBinding" type="tns:caCDPosterServicePT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendPostRequest">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="caCDPosterService">
+    <wsdl:port binding="tns:caCDPosterServiceBinding" name="caCDPosterServicePort">
+      <soap:address location="http://localhost:8080/ode/processes/caCDPosterService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

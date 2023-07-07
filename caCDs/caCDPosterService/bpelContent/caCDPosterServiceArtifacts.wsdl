@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService/Artifacts"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:client="http://it.univaq.connectpa.publicbillposting/caCDPosterService"
+	xmlns:posterservice="http://it.univaq.connectpa.publicbillposting/posterservice"
+	xmlns:cart="http://it.univaq.connectpa.publicbillposting/cart"
+	xmlns:municipalityposterservice="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"
+	xmlns:cacdmobileapp="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"
+	xmlns:cacdpaymentservice="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"
+	xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager">
+  
+  <partnerLinkType name="ClientPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="Client" portType="client:caCDPosterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="PosterServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="PosterService" portType="posterservice:posterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="PosterServiceConsumerPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="PosterServiceConsumer" portType="posterservice:posterServiceConsumerPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CartPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="Cart" portType="cart:cartPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="MunicipalityPosterServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="MunicipalityPosterService" portType="municipalityposterservice:municipalityPosterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="MunicipalityPosterServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="MunicipalityPosterService" portType="municipalityposterservice:municipalityPosterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CaCDMobileAppPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="CaCDMobileApp" portType="cacdmobileapp:caCDMobileAppPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CaCDMobileAppCoordinationPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="CaCDMobileAppCoordination" portType="cacdmobileapp:caCDMobileAppCoordinationPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CaCDPaymentServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="CaCDPaymentService" portType="cacdpaymentservice:caCDPaymentServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="ContextManagerPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="ContextManager" portType="contextmanager:ContextManagerPT"/>
+  </partnerLinkType>
+
+  <import location="caCDPosterService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService"/>
+  <import location="posterservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/posterservice"/>
+  <import location="cart.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/cart"/>
+  <import location="municipalityposterservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"/>
+  <import location="caCDMobileApp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"/>
+  <import location="caCDPaymentService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"/>
+  <import location="contextmanager.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/contextmanager"/>
+
+</definitions>

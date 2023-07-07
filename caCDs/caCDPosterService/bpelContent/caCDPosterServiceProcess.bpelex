@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="ASCII"?>
+<extensionmodel:ExtensionMap xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:extensionmodel="http:///extensionmodel.ecore" xmlns:org.eclipse.bpel.ui.uiextensionmodel="http:///org/eclipse/bpel/ui/uiextensionmodel.ecore" namespace="http://org.eclipse.bpel.ui/">
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#/"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ProcessExtension" modificationStamp="1688656259000"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.9"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.10"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.11"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.12"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.13"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.14"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.15"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.16"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.17"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.18"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.19"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.20"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.21"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.22"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.23"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.24"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.25"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.26"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.27"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.28"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.29"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.30"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.31"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.32"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.33"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.35"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.36"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.37"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.38"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.39"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.40"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.41"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.42"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.43"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.44"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.45"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.46"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.47"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@variables/@children.48"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:OnMessageExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.1/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.2/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.3/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.4/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.5/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.6/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.7/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.8/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.9"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.9/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.10"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.10/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.11"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.11/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.12"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.12/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.13"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.13/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.14"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.14/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.15"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.15/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.16"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.16/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.17"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.17/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.18"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.18/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.19"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.19/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.20"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.21"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.21/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.21/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.22"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@counterName"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.1/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.2/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3/@copy.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3/@copy.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.3/@copy.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.5/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.6/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.8/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.8/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@activity/@activities.9"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.23/@activity/@variables/@children.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.24"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.24/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.24/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.25"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.26"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.26/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.28"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.29"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.29/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.30"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.31"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.31/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.31/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.32"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.33"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.33/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.34"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.35"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.35/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.35/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.36"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.37"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@counterName"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.1/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.2/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3/@copy.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3/@copy.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.3/@copy.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.5/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.6/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.8/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.8/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@activity/@activities.9"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.38/@activity/@variables/@children.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:VariableExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.41"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.42"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.42/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.43"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.44"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.44/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.45"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.46"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.47"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.47/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.48"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.50"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.27"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.49"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.49/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.49/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CaseExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.0/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.2/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@elseIf.0/@activity/@activities.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.0/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.0/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.2"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.2/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.3"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.4"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.4/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.4/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.5"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.6"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.6/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.6/@copy.1"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.7"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.8"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.8/@copy.0"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:CopyExtension"/>
+  </extensions>
+  <extensions>
+    <extendedObject href="caCDPosterServiceProcess.bpel#//@activity/@activities.0/@messages.0/@activity/@activities.51/@activity/@activities.9"/>
+    <extensionObject xsi:type="org.eclipse.bpel.ui.uiextensionmodel:ActivityExtension"/>
+  </extensions>
+</extensionmodel:ExtensionMap>

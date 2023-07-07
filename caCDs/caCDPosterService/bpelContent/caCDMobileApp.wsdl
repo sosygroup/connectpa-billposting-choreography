@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="caCDMobileApp"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp">
+    	<xsd:element name="postRequest" type="tns:postRequest"/>
+		<xsd:element name="confirmationRequest" type="tns:confirmationRequest"/>
+		<xsd:element name="getBillingRequest" type="tns:getBillingRequest"/>
+		<xsd:element name="billingDetails" type="tns:billingDetails"/>
+		<xsd:element name="paymentData" type="tns:paymentData"/>
+		<xsd:element name="addSpaceRequest" type="tns:spaceRequest"/>
+		<xsd:element name="removeSpaceRequest" type="tns:spaceRequest"/>
+		<xsd:element name="cartID" type="tns:cartID"/>
+		<xsd:element name="spaceList" type="tns:spaceList"/>
+		<xsd:element name="postResponse" type="tns:postResponse"/>
+		<xsd:element name="receipt" type="tns:receipt"/>
+		<xsd:element name="paymentInvoice" type="tns:paymentInvoice"/>
+
+		<xsd:element name="getBillingCoordinationRequest" type="tns:instanceDescriptor"/>
+
+		<xsd:complexType name="postRequest">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="startDate" type="xsd:date"/>
+				<xsd:element name="endDate" type="xsd:date"/>
+				<xsd:element name="locationCoordinates">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="latitude" type="xsd:double"/>
+							<xsd:element name="longitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="locationName" type="xsd:string"/>
+				<xsd:element name="searchRadius" type="xsd:int"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="confirmationRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="getBillingRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="billingDetails">
+	    	<xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="totalAmount" type="xsd:double" />
+		  	  <xsd:element name="bills" type="tns:paymentBill" maxOccurs="unbounded" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentBill">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="municipalityCode" type="xsd:string" />
+			  <xsd:element name="municipalityName" type="xsd:string" />
+			  <xsd:element name="confirmed" type="xsd:boolean"/>
+		      <xsd:element name="amountDue" type="xsd:double" />
+		      <xsd:element name="billingCode" type="xsd:string" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentData">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="billingCode" type="xsd:string" />
+		      <xsd:element name="amountDue" type="xsd:double" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="spaceRequest">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="space" type="tns:space" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+        <xsd:complexType name="cartID">
+		    <xsd:sequence>
+		      <xsd:element name="id" type="xsd:string"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+        <xsd:complexType name="spaceList">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="spaces" type="tns:space" maxOccurs="unbounded"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="space">
+			<xsd:sequence>
+				<xsd:element name="municipalityCode" type="xsd:string" />
+				<xsd:element name="municipalityName" type="xsd:string" />
+				<xsd:element name="areaCode" type="xsd:string" />
+				<xsd:element name="areaName" type="xsd:string" />
+				<xsd:element name="spaceCode" type="xsd:string" />
+				<xsd:element name="position" type="tns:coordinates" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="coordinates">
+		    <xsd:sequence>
+		      <xsd:element name="latitude" type="xsd:double"/>
+		      <xsd:element name="longitude" type="xsd:double"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="postResponse">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="availableSpaces" type="tns:space" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="receipt">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string" />
+				<xsd:element name="billingCode" type="xsd:string" />
+				<xsd:element name="amountPaid" type="xsd:double" />
+				<xsd:element name="transactionCode" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="paymentInvoice">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+		      	<xsd:element name="billingCode" type="xsd:string"/>
+		      	<xsd:element name="amountDue" type="xsd:double"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="instanceDescriptor">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="postRequest">
+  	<wsdl:part element="tns:postRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="confirmationRequest">
+  	<wsdl:part element="tns:confirmationRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getBillingRequest">
+  	<wsdl:part element="tns:getBillingRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="billingDetails">
+  	<wsdl:part element="tns:billingDetails" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="paymentData">
+  	<wsdl:part element="tns:paymentData" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="addSpaceRequest">
+    <wsdl:part element="tns:addSpaceRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="removeSpaceRequest">
+  	<wsdl:part element="tns:removeSpaceRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="cartID">
+    <wsdl:part element="tns:cartID" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="spaceList">
+  	<wsdl:part element="tns:spaceList" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="postResponse">
+    <wsdl:part element="tns:postResponse" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="receipt">
+    <wsdl:part element="tns:receipt" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="paymentInvoice">
+    <wsdl:part element="tns:paymentInvoice" name="request"/>
+  </wsdl:message>
+
+  <!-- Coordination -->
+  <wsdl:message name="getBillingCoordinationRequest">
+    <wsdl:part element="tns:getBillingCoordinationRequest" name="request"/>
+  </wsdl:message>
+ 
+  <wsdl:portType name="caCDMobileAppPT">
+  	<wsdl:operation name="SendPostRequest">
+      <wsdl:input message="tns:postRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <wsdl:input message="tns:confirmationRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <wsdl:input message="tns:getBillingRequest"/>
+      <wsdl:output message="tns:billingDetails"/>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <wsdl:input message="tns:paymentData"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddSpace">
+      <wsdl:input message="tns:addSpaceRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSpace">
+   	  <wsdl:input message="tns:removeSpaceRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedSpaces">
+   	  <wsdl:input message="tns:cartID"/>
+   	  <wsdl:output message="tns:spaceList"/>
+    </wsdl:operation>
+  	<wsdl:operation name="Reply">
+      <wsdl:input message="tns:postResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReplyWithReceipt">
+      <wsdl:input message="tns:receipt"/>
+    </wsdl:operation>
+    <wsdl:operation name="ReplyWithInvoice">
+      <wsdl:input message="tns:paymentInvoice"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="caCDMobileAppBinding" type="tns:caCDMobileAppPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	<wsdl:operation name="SendPostRequest">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="AddSpace">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSpace">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedSpaces">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reply">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReplyWithReceipt">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReplyWithInvoice">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <!-- Coordination -->
+  <wsdl:portType name="caCDMobileAppCoordinationPT">
+    <wsdl:operation name="CoordinateGetBilling">
+      <wsdl:input message="tns:getBillingCoordinationRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="caCDMobileAppCoordinationBinding" type="tns:caCDMobileAppCoordinationPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CoordinateGetBilling">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="caCDMobileAppService">
+    <wsdl:port binding="tns:caCDMobileAppBinding" name="caCDMobileAppPort">
+      <soap:address location="http://localhost:8080/ode/processes/caCDMobileApp"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:caCDMobileAppCoordinationBinding" name="caCDMobileAppCoordinationPort">
+      <soap:address location="http://localhost:8080/ode/processes/caCDMobileAppCoordination"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

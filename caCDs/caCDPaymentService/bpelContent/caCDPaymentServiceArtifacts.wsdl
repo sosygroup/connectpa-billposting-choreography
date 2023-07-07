@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService/Artifacts"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:client="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"
+	xmlns:paymentservice="http://it.univaq.connectpa.publicbillposting/paymentservice"
+	xmlns:municipalityposterservice="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"
+	xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager">
+  
+  <partnerLinkType name="ClientPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="Client" portType="client:caCDPaymentServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="PaymentServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="PaymentService" portType="paymentservice:paymentServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="PaymentServiceConsumerPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="PaymentServiceConsumer" portType="paymentservice:paymentServiceConsumerPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="MunicipalityPosterServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="MunicipalityPosterService" portType="municipalityposterservice:municipalityPosterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="ContextManagerPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="ContextManager" portType="contextmanager:ContextManagerPT"/>
+  </partnerLinkType>
+
+  <import location="caCDPaymentService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPaymentService"/>
+  <import location="paymentservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/paymentservice"/>
+  <import location="municipalityposterservice.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/municipalityposterservice"/>
+  <import location="contextmanager.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/contextmanager"/>
+
+</definitions>

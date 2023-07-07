@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp/Artifacts"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:client="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"
+	xmlns:mobileapp="http://it.univaq.connectpa.publicbillposting/mobileapp"
+	xmlns:cacdposterservice="http://it.univaq.connectpa.publicbillposting/caCDPosterService"
+	xmlns:contextmanager="http://it.univaq.connectpa.publicbillposting/contextmanager"
+	xmlns:cart="http://it.univaq.connectpa.publicbillposting/cart">
+  
+  <partnerLinkType name="ClientPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="Client" portType="client:caCDMobileAppPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="ClientCoordinationPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="ClientCoordination" portType="client:caCDMobileAppCoordinationPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="MobileAppPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="MobileApp" portType="mobileapp:mobileAppPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CartPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="Cart" portType="cart:cartPT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="CaCDPosterServicePLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="CaCDPosterService" portType="cacdposterservice:caCDPosterServicePT"/>
+  </partnerLinkType>
+
+  <partnerLinkType name="ContextManagerPLT" xmlns="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+    <role name="ContextManager" portType="contextmanager:ContextManagerPT"/>
+  </partnerLinkType>
+
+  <import location="caCDMobileApp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDMobileApp"/>
+  <import location="mobileapp.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/mobileapp"/>
+  <import location="cart.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/cart"/>
+  <import location="caCDPosterService.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/caCDPosterService"/>
+  <import location="contextmanager.wsdl" namespace="http://it.univaq.connectpa.publicbillposting/contextmanager"/>
+
+</definitions>

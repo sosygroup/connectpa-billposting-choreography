@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/posterservice"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="posterservice"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/posterservice">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/posterservice">
+
+		<xsd:element name="postRequest" type="tns:postRequest"/>
+		<xsd:element name="confirmationRequest" type="tns:confirmationRequest"/>
+		<xsd:element name="getBillingRequest" type="tns:getBillingRequest"/>
+		<xsd:element name="billingDetails" type="tns:billingDetails"/>
+		<xsd:element name="paymentData" type="tns:paymentData"/>
+
+		<xsd:element name="getFindRequestMessageRequest" type="tns:instanceInfoWithContext"/>
+		<xsd:element name="getFindRequestMessageResponse" type="tns:findRequest"/>
+		<xsd:element name="storeFindResponseMessage" type="tns:storeFindResponseMessageWithContext"/>
+		<xsd:element name="getPostResponseMessageRequest" type="tns:instanceInfo"/>
+		<xsd:element name="getPostResponseMessageResponse" type="tns:postResponse"/>
+		<xsd:element name="getCartIDMessageRequest" type="tns:instanceInfo"/>
+		<xsd:element name="getCartIDMessageResponse" type="tns:cartID"/>
+		<xsd:element name="storeSpaceListMessage" type="tns:storeSpaceListMessage"/>
+		<xsd:element name="getSpaceConfirmationRequestMessageRequest" type="tns:instanceInfoWithContext"/>
+		<xsd:element name="getSpaceConfirmationRequestMessageResponse" type="tns:spaceConfirmationRequest"/>
+		<xsd:element name="storeBillingDetailsMessage" type="tns:storeBillingDetailsMessageWithContext"/>
+		<xsd:element name="getPaymentDataMessageRequest" type="tns:instanceInfo"/>
+		<xsd:element name="getPaymentDataMessageResponse" type="tns:paymentData"/>
+		<xsd:element name="storeReceiptMessage" type="tns:storeReceiptMessage"/>
+		<xsd:element name="getReceiptMessageRequest" type="tns:instanceInfo"/>
+		<xsd:element name="getReceiptMessageResponse" type="tns:receipt"/>
+		<xsd:element name="getPaymentInvoiceMessageRequest" type="tns:instanceInfo"/>
+		<xsd:element name="getPaymentInvoiceMessageResponse" type="tns:paymentInvoice"/>
+		
+		<xsd:element name="emptyResponse" type="tns:emptyResponse"/>
+	
+		<xsd:complexType name="postRequest">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="startDate" type="xsd:date"/>
+				<xsd:element name="endDate" type="xsd:date"/>
+				<xsd:element name="locationCoordinates">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="latitude" type="xsd:double"/>
+							<xsd:element name="longitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="locationName" type="xsd:string"/>
+				<xsd:element name="searchRadius" type="xsd:int"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="confirmationRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="getBillingRequest">
+		  	<xsd:sequence>
+		  	  <xsd:element name="requestID" type="xsd:string"/>
+		  	</xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="billingDetails">
+	    	<xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="totalAmount" type="xsd:double" />
+		  	  <xsd:element name="bills" type="tns:paymentBill" maxOccurs="unbounded" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentBill">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="municipalityCode" type="xsd:string" />
+			  <xsd:element name="municipalityName" type="xsd:string" />
+			  <xsd:element name="confirmed" type="xsd:boolean"/>
+		      <xsd:element name="amountDue" type="xsd:double" />
+		      <xsd:element name="billingCode" type="xsd:string" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="paymentData">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="billingCode" type="xsd:string" />
+		      <xsd:element name="amountDue" type="xsd:double" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="instanceInfo">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="instanceInfoWithContext">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+				<xsd:element name="contextRef" type="xsd:string"/>
+				<xsd:element name="serviceContext">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="referenceLatitude" type="xsd:double"/>
+							<xsd:element name="referenceLongitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element> 
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="findRequest">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="startDate" type="xsd:date" />
+		      <xsd:element name="endDate" type="xsd:date" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="storeFindResponseMessageWithContext">
+		    <xsd:sequence>
+		      <xsd:element name="instanceId" type="xsd:string"/>
+		      <xsd:element name="contextRef" type="xsd:string"/>
+		      <xsd:element name="message" type="tns:findResponse" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="findResponse">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="startDate" type="xsd:date" />
+		      <xsd:element name="endDate" type="xsd:date" />
+		      <xsd:element name="availableSpaces" type="tns:space" maxOccurs="unbounded" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="space">
+			<xsd:sequence>
+				<xsd:element name="municipalityCode" type="xsd:string" />
+				<xsd:element name="municipalityName" type="xsd:string" />
+				<xsd:element name="areaCode" type="xsd:string" />
+				<xsd:element name="areaName" type="xsd:string" />
+				<xsd:element name="spaceCode" type="xsd:string" />
+				<xsd:element name="position" type="tns:coordinates" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="coordinates">
+		    <xsd:sequence>
+		      <xsd:element name="latitude" type="xsd:double"/>
+		      <xsd:element name="longitude" type="xsd:double"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="postResponse">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="availableSpaces" type="tns:space" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="cartID">
+		    <xsd:sequence>
+		      <xsd:element name="id" type="xsd:string"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="storeSpaceListMessage">
+		    <xsd:sequence>
+		      <xsd:element name="instanceId" type="xsd:string"/>
+		      <xsd:element name="message" type="tns:spaceList" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+        <xsd:complexType name="spaceList">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="spaces" type="tns:space" maxOccurs="unbounded"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="spaceConfirmationRequest">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="startDate" type="xsd:date" />
+		      <xsd:element name="endDate" type="xsd:date" />
+		      <xsd:element name="spaces" type="tns:space" maxOccurs="unbounded" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="storeBillingDetailsMessageWithContext">
+		    <xsd:sequence>
+		      <xsd:element name="instanceId" type="xsd:string"/>
+		      <xsd:element name="contextRef" type="xsd:string"/>
+		      <xsd:element name="message" type="tns:billingDetails" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="storeReceiptMessage">
+		    <xsd:sequence>
+		      <xsd:element name="instanceId" type="xsd:string"/>
+		      <xsd:element name="message" type="tns:receipt" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="receipt">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string" />
+				<xsd:element name="billingCode" type="xsd:string" />
+				<xsd:element name="amountPaid" type="xsd:double" />
+				<xsd:element name="transactionCode" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="paymentInvoice">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+		      	<xsd:element name="billingCode" type="xsd:string"/>
+		      	<xsd:element name="amountDue" type="xsd:double"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="emptyResponse">
+			<xsd:sequence/>
+		</xsd:complexType>
+
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="postRequest">
+  	<wsdl:part element="tns:postRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="confirmationRequest">
+  	<wsdl:part element="tns:confirmationRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getBillingRequest">
+  	<wsdl:part element="tns:getBillingRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="billingDetails">
+  	<wsdl:part element="tns:billingDetails" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="paymentData">
+  	<wsdl:part element="tns:paymentData" name="request"/>
+  </wsdl:message>
+
+  <wsdl:message name="getFindRequestMessageRequest">
+  	<wsdl:part element="tns:getFindRequestMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getFindRequestMessageResponse">
+  	<wsdl:part element="tns:getFindRequestMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="storeFindResponseMessage">
+  	<wsdl:part element="tns:storeFindResponseMessage" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPostResponseMessageRequest">
+  	<wsdl:part element="tns:getPostResponseMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPostResponseMessageResponse">
+  	<wsdl:part element="tns:getPostResponseMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="getCartIDMessageRequest">
+  	<wsdl:part element="tns:getCartIDMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getCartIDMessageResponse">
+  	<wsdl:part element="tns:getCartIDMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="storeSpaceListMessage">
+  	<wsdl:part element="tns:storeSpaceListMessage" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getSpaceConfirmationRequestMessageRequest">
+  	<wsdl:part element="tns:getSpaceConfirmationRequestMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getSpaceConfirmationRequestMessageResponse">
+  	<wsdl:part element="tns:getSpaceConfirmationRequestMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="storeBillingDetailsMessage">
+  	<wsdl:part element="tns:storeBillingDetailsMessage" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentDataMessageRequest">
+  	<wsdl:part element="tns:getPaymentDataMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentDataMessageResponse">
+  	<wsdl:part element="tns:getPaymentDataMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="storeReceiptMessage">
+  	<wsdl:part element="tns:storeReceiptMessage" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getReceiptMessageRequest">
+  	<wsdl:part element="tns:getReceiptMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getReceiptMessageResponse">
+  	<wsdl:part element="tns:getReceiptMessageResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentInvoiceMessageRequest">
+  	<wsdl:part element="tns:getPaymentInvoiceMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="getPaymentInvoiceMessageResponse">
+  	<wsdl:part element="tns:getPaymentInvoiceMessageResponse" name="response"/>
+  </wsdl:message>
+
+  <wsdl:message name="emptyResponse">
+  	<wsdl:part element="tns:emptyResponse" name="response"/>
+  </wsdl:message>
+
+
+  <!-- Provider part -->
+  <wsdl:portType name="posterServicePT">
+    <wsdl:operation name="SendPostRequest">
+      <wsdl:input message="tns:postRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <wsdl:input message="tns:confirmationRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <wsdl:input message="tns:getBillingRequest"/>
+      <wsdl:output message="tns:billingDetails"/>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <wsdl:input message="tns:paymentData"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="posterServiceBinding" type="tns:posterServicePT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendPostRequest">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmation">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilling">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartPaymentProcess">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <!-- Consumer Part -->
+  <wsdl:portType name="posterServiceConsumerPT">
+  	<wsdl:operation name="getFindRequestMessage">
+  	  <wsdl:input message="tns:getFindRequestMessageRequest"/>
+  	  <wsdl:output message="tns:getFindRequestMessageResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="storeFindResponseMessage">
+  	  <wsdl:input message="tns:storeFindResponseMessage"/>
+  	  <wsdl:output message="tns:emptyResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getPostResponseMessage">
+  	  <wsdl:input message="tns:getPostResponseMessageRequest"/>
+  	  <wsdl:output message="tns:getPostResponseMessageResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getCartIDMessage">
+  	  <wsdl:input message="tns:getCartIDMessageRequest"/>
+  	  <wsdl:output message="tns:getCartIDMessageResponse"/>
+  	</wsdl:operation>
+ 	<wsdl:operation name="storeSpaceListMessage">
+  	  <wsdl:input message="tns:storeSpaceListMessage"/>
+  	  <wsdl:output message="tns:emptyResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getSpaceConfirmationRequestMessage">
+  	  <wsdl:input message="tns:getSpaceConfirmationRequestMessageRequest"/>
+  	  <wsdl:output message="tns:getSpaceConfirmationRequestMessageResponse"/>
+  	</wsdl:operation>
+    <wsdl:operation name="storeBillingDetailsMessage">
+  	  <wsdl:input message="tns:storeBillingDetailsMessage"/>
+  	  <wsdl:output message="tns:emptyResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getPaymentDataMessage">
+  	  <wsdl:input message="tns:getPaymentDataMessageRequest"/>
+  	  <wsdl:output message="tns:getPaymentDataMessageResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="storeReceiptMessage">
+  	  <wsdl:input message="tns:storeReceiptMessage"/>
+  	  <wsdl:output message="tns:emptyResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getReceiptMessage">
+  	  <wsdl:input message="tns:getReceiptMessageRequest"/>
+  	  <wsdl:output message="tns:getReceiptMessageResponse"/>
+  	</wsdl:operation>
+  	<wsdl:operation name="getPaymentInvoiceMessage">
+  	  <wsdl:input message="tns:getPaymentInvoiceMessageRequest"/>
+  	  <wsdl:output message="tns:getPaymentInvoiceMessageResponse"/>
+  	</wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="posterServiceConsumerBinding" type="tns:posterServiceConsumerPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getFindRequestMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeFindResponseMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPostResponseMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCartIDMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+     <wsdl:operation name="storeSpaceListMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpaceConfirmationRequestMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeBillingDetailsMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="getPaymentDataMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeReceiptMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReceiptMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentInvoiceMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="posterService">
+    <!-- Provider port -->
+	<wsdl:port binding="tns:posterServiceBinding" name="posterServicePort">
+      <soap:address location="http://localhost:9080/posterservice/posterservice"/>
+    </wsdl:port>
+    <!-- Consumer port -->
+    <wsdl:port binding="tns:posterServiceConsumerBinding" name="posterServiceConsumerPort">
+      <soap:address location="http://localhost:9080/posterservice/consumer"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

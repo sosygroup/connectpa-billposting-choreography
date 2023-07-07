@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+	<div class="content-wrapper" layout:fragment="content">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3 th:text="${instancesCount}">0</h3>
+
+              <p>Tested Instances</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <a th:href="@{/instances}" class="small-box-footer">Execution Details <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+     </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<script layout:fragment="script" th:inline="javascript">
+/*<![CDATA[*/
+$(function () {
+
+	[# th:if="${requireServiceResult.name() == 'OK'}"]
+		toastr.success('New events have been found and added to database');
+	[/]
+	[# th:if="${requireServiceResult.name() == 'EMPTY'}"]
+		toastr.warning('No new events have been found')
+	[/]		
+
+});
+/*]]>*/
+</script>
+</body>
+</html>

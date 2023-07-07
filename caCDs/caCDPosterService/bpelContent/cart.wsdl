@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/cart"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="cart"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/cart">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/cart">
+		<xsd:element name="addSpaceRequest" type="tns:spaceRequest"/>
+		<xsd:element name="removeSpaceRequest" type="tns:spaceRequest"/>
+		<xsd:element name="cartID" type="tns:cartID"/>
+		<xsd:element name="spaceList" type="tns:spaceList"/>
+
+        <xsd:complexType name="spaceRequest">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="space" type="tns:space" />
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+        <xsd:complexType name="cartID">
+		    <xsd:sequence>
+		      <xsd:element name="id" type="xsd:string"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+        <xsd:complexType name="spaceList">
+		    <xsd:sequence>
+		      <xsd:element name="requestID" type="xsd:string"/>
+		      <xsd:element name="spaces" type="tns:space" maxOccurs="unbounded"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+		<xsd:complexType name="space">
+			<xsd:sequence>
+				<xsd:element name="municipalityCode" type="xsd:string" />
+				<xsd:element name="municipalityName" type="xsd:string" />
+				<xsd:element name="areaCode" type="xsd:string" />
+				<xsd:element name="areaName" type="xsd:string" />
+				<xsd:element name="spaceCode" type="xsd:string" />
+				<xsd:element name="position" type="tns:coordinates" />
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="coordinates">
+		    <xsd:sequence>
+		      <xsd:element name="latitude" type="xsd:double"/>
+		      <xsd:element name="longitude" type="xsd:double"/>
+		    </xsd:sequence>
+	  	</xsd:complexType>
+
+	</xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="addSpaceRequest">
+    <wsdl:part element="tns:addSpaceRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="removeSpaceRequest">
+  	<wsdl:part element="tns:removeSpaceRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="cartID">
+    <wsdl:part element="tns:cartID" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="spaceList">
+  	<wsdl:part element="tns:spaceList" name="response"/>
+  </wsdl:message>
+ 
+  <wsdl:portType name="cartPT">
+    <wsdl:operation name="AddSpace">
+      <wsdl:input message="tns:addSpaceRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSpace">
+   	  <wsdl:input message="tns:removeSpaceRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedSpaces">
+   	  <wsdl:input message="tns:cartID"/>
+   	  <wsdl:output message="tns:spaceList"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="cartBinding" type="tns:cartPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddSpace">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSpace">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedSpaces">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="cartService">
+    <wsdl:port binding="tns:cartBinding" name="cartPort">
+      <soap:address location="http://localhost:9080/cart/cart"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

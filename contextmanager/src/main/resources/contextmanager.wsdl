@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://it.univaq.connectpa.publicbillposting/contextmanager"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="contextmanager"
+	targetNamespace="http://it.univaq.connectpa.publicbillposting/contextmanager">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://it.univaq.connectpa.publicbillposting/contextmanager">
+
+    	<xsd:element name="acquirePostRequestMessageRequest" type="tns:acquirePostRequestMessageRequest"/>
+    	<xsd:element name="selectMunicipalityPosterServiceRequest" type="tns:instanceDescriptor"/>
+    	<xsd:element name="selectMunicipalityPosterServiceResponse" type="tns:municipalityPosterServiceSelectionResponse"/>
+    	<xsd:element name="selectPaymentVariantRequest" type="tns:instanceDescriptor"/>
+    	<xsd:element name="selectPaymentVariantResponse" type="xsd:string"/>
+
+		<xsd:complexType name="instanceDescriptor">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="acquirePostRequestMessageRequest">
+			<xsd:sequence>
+				<xsd:element name="instanceId" type="xsd:string"/>
+				<xsd:element name="message" type="tns:postRequest"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="municipalityPosterServiceSelectionResponse">
+			<xsd:sequence>
+				<xsd:element name="selected" type="tns:serviceInstance" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="serviceInstance">
+			<xsd:sequence>
+				<xsd:element name="name" type="xsd:string"/>
+				<xsd:element name="address" type="xsd:string"/>
+				<xsd:element name="serviceContext">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="referenceLatitude" type="xsd:double"/>
+							<xsd:element name="referenceLongitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element> 
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="postRequest">
+			<xsd:sequence>
+				<xsd:element name="requestID" type="xsd:string"/>
+				<xsd:element name="startDate" type="xsd:date"/>
+				<xsd:element name="endDate" type="xsd:date"/>
+				<xsd:element name="locationCoordinates">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="latitude" type="xsd:double"/>
+							<xsd:element name="longitude" type="xsd:double"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="locationName" type="xsd:string"/>
+				<xsd:element name="searchRadius" type="xsd:int"/>
+			</xsd:sequence>
+		</xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="acquirePostRequestMessageRequest">
+    <wsdl:part element="tns:acquirePostRequestMessageRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="selectMunicipalityPosterServiceRequest">
+    <wsdl:part element="tns:selectMunicipalityPosterServiceRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="selectMunicipalityPosterServiceResponse">
+    <wsdl:part element="tns:selectMunicipalityPosterServiceResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="selectPaymentVariantRequest">
+    <wsdl:part element="tns:selectPaymentVariantRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="selectPaymentVariantResponse">
+    <wsdl:part element="tns:selectPaymentVariantResponse" name="response"/>
+  </wsdl:message>
+ 
+  <wsdl:portType name="ContextManagerPT">
+    <wsdl:operation name="AcquirePostRequestMessage">
+      <wsdl:input message="tns:acquirePostRequestMessageRequest"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMunicipalityPosterService">
+      <wsdl:input message="tns:selectMunicipalityPosterServiceRequest"/>
+      <wsdl:output message="tns:selectMunicipalityPosterServiceResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaymentVariant">
+      <wsdl:input message="tns:selectPaymentVariantRequest"/>
+      <wsdl:output message="tns:selectPaymentVariantResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="ContextManagerBinding" type="tns:ContextManagerPT">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AcquirePostRequestMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SelectMunicipalityPosterService">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectPaymentVariant">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="contextManagerService">
+    <wsdl:port binding="tns:ContextManagerBinding" name="ContextManagerPort">
+      <soap:address location="http://localhost:8090/contextmanager/contextmanager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

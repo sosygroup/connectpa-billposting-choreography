@@ -1,0 +1,10 @@
+[
+	{
+		"name": "Variant A",
+		"paymentServiceRequired": true
+	},
+	{
+		"name": "variant B",
+		"paymentServiceRequired": false
+	}
+]
